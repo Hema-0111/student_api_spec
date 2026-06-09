@@ -1,0 +1,46 @@
+#%RAML 1.0
+title: Student_data
+
+types:
+  addStudentData: 
+    type: object
+    properties:
+      name:
+        type: string
+        required: true
+      place:
+        type: string
+        required: true
+      phoneNumber:
+        type: integer
+        required: true
+  addStudRes:
+    type: object
+    properties:
+      message:
+        type: string
+
+/createStudent:
+  post:
+    description: "Create Student"
+    body:
+      application/json:
+        type: addStudentData
+        example:
+          {
+            "name": "Hema",
+            "place": "Tpt",
+            "phoneNumber": 124567
+          }
+    responses:
+      201:
+        description: "Student Created"
+        body:
+          application/json:
+            type: addStudRes
+            example:
+              {
+                "message": "created successfully"
+              }
+
+          
